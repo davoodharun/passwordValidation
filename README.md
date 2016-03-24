@@ -3,14 +3,14 @@
 # Main Functions
 - isPasswordValid
   - Description: function that tests whether a string passes certain parameters set by the owner
-  - Parameters:
+  - Inputs:
     - str: string to be tested
     - minLength: (Integer) minimum length of password; if ommitted, parameter will default to 7 
     - maxLength: (Integer) maximum length of password; if ommitted, parameter will default to 16 
     - specialCharacters: (String) special characters that are allowed in password; if ommited, parameter will default to '!@#$%^&*'
 - generateRandomPassword
   - Description: generates random valid password that adheres to certain parameters
-  - Parameters:
+  - Inputs:
     - minLength: (Integer) minimum length of password (exclusive); if ommitted, parameter will default to 7 
     - maxLength: (Integer) maximum length of password (inclusive); if ommitted, parameter will default to 16 
     - specialCharacters: (String) special characters that are allowed in password; if ommited, parameter will default to '!@#$%^&*'
