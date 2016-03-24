@@ -10,10 +10,10 @@ var isMixedCase = function(str) {
 }
 
 // checks if password is greater or equal to 8 characters and less than or equal to 16 characters
-var hasCorrectLength = function(str, min, max) {
-  var min = min || 8;
-  var max = max || 16;
-  return str.length >=min && str.length <=max;
+var hasCorrectLength = function(str, minLength, maxLength) {
+  var minLength = minLength || 7;
+  var maxLength = maxLength || 16;
+  return str.length >=minLength && str.length <=maxLength;
 }
 
 // check if password contains special character
@@ -44,8 +44,8 @@ var containsOnlyLettersAndSpecialCharacters = function (str, specialCharacters) 
 }
 
 // PASSWORD VALIDATION EVAL FUNCTION
-var isPasswordValid = function(str, specialCharacters) {
-  return isMixedCase(str) && hasCorrectLength(str) && containsSpecialCharacter(str) && containsOnlyLettersAndSpecialCharacters(str);
+var isPasswordValid = function(str, minLength, maxLength, specialCharacters) {
+  return isMixedCase(str) && hasCorrectLength(str, minLength, maxLength) && containsSpecialCharacter(str, specialCharacters) && containsOnlyLettersAndSpecialCharacters(str, specialCharacters);
 }
 
 
@@ -54,7 +54,7 @@ var isPasswordValid = function(str, specialCharacters) {
 // RANDOM PASSWORD GENERATOR HELPERS
 
 // generate a random number within a range
-var generateRandomNumberInRange = function (min,max) {
+var generateRandomNumberInRange = function (min, max) {
   return Math.floor(Math.random()*(max-min)+min);
 }
 
@@ -76,9 +76,9 @@ var shuffle = function shuffle(string) {
 }
 
 //generate random password
-var generateRandomPassword = function(mix, max, specialCharacters) {
-  var max = max || 16;
-  var min = min || 8;
+var generateRandomPassword = function(minLength, maxLength, specialCharacters) {
+  var maxLength = maxLength || 16;
+  var minLength = minLength || 7;
   var specialCharacters = specialCharacters || '!@#$%^&*';
   var choices = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz', specialCharacters];
   var password = '';
@@ -86,7 +86,7 @@ var generateRandomPassword = function(mix, max, specialCharacters) {
   password = password.concat(choices[1][generateRandomNumberInRange(choices[1].length-1, 0)]);
   password = password.concat(choices[2][generateRandomNumberInRange(choices[2].length-1, 0)]);
 
-  var randomPasswordStringLength = generateRandomNumberInRange(max + 1, min);
+  var randomPasswordStringLength = generateRandomNumberInRange(minLength, maxLength);
   
 
   for(var i = 3; i<=randomPasswordStringLength;i++) {
@@ -98,10 +98,10 @@ var generateRandomPassword = function(mix, max, specialCharacters) {
 }
 
 // TEST
-// var password = generateRandomPassword(8, 16)
+// var password = generateRandomPassword()
 // console.log(password)
 // console.log(isPasswordValid(password))
 // console.log(isMixedCase(password), 'mixed case test')
-// console.log(hasCorrectLength(password, 8, 16), 'length test');
+// console.log(password.length, hasCorrectLength(password), 'length test');
 // console.log(containsSpecialCharacter(password), 'specialCharacter test')
 // console.log(containsOnlyLettersAndSpecialCharacters(password), 'only special characters and letters test')
