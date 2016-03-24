@@ -11,8 +11,8 @@
 - generateRandomPassword
   - Description: generates random valid password that adheres to certain parameters
   - Inputs:
-    - minLength: (Integer) minimum length of password (exclusive); if ommitted, parameter will default to 7 
-    - maxLength: (Integer) maximum length of password (inclusive); if ommitted, parameter will default to 16 
+    - minLength: (Integer) minimum length of password; if ommitted, parameter will default to 7 
+    - maxLength: (Integer) maximum length of password; if ommitted, parameter will default to 16 
     - specialCharacters: (String) special characters that are allowed in password; if ommited, parameter will default to '!@#$%^&*'
 
 # Helper Functions
